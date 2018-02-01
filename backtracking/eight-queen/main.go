@@ -2,17 +2,16 @@ package main
 
 import (
 	"fmt"
-	_ "os"
+	"os"
+	"strconv"
 )
 
-const (
-	ROW int = 8
-	COL int = 8
-)
+var ROW int = 0
+var COL int = 0
 
 var Count int = 0
 
-func Check(array *[ROW]int, row, col int) bool {
+func Check(array []int, row, col int) bool {
 	for i := 0; i < row; i++ {
 		x := array[i]
 		y := i
@@ -26,7 +25,7 @@ func Check(array *[ROW]int, row, col int) bool {
 	return true
 }
 
-func Show(array *[ROW]int) {
+func Show(array []int) {
 	fmt.Printf("count: %d ===================\n", Count)
 
 	for i := 0; i < ROW; i++ {
@@ -42,7 +41,7 @@ func Show(array *[ROW]int) {
 	}
 }
 
-func Queen(array *[ROW]int, row int) {
+func Queen(array []int, row int) {
 	if row > (ROW - 1) {
 		Count++
 
@@ -62,10 +61,18 @@ func Queen(array *[ROW]int, row int) {
 }
 
 func main() {
+	if len(os.Args) != 2 {
+		fmt.Printf("Uasge: %s num\n", os.Args[0])
+		return
+	} else {
+		ROW, _ = strconv.Atoi(os.Args[1])
+
+		COL, _ = strconv.Atoi(os.Args[1])
+	}
 
 	fmt.Println("begin count: ", Count)
 
-	array := new([ROW]int)
+	array := make([]int, ROW)
 
 	Queen(array, 0)
 
