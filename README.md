@@ -1,0 +1,2 @@
+# Algorithm
+accumulate
