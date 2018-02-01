@@ -17,6 +17,7 @@ func Check(array *[ROW]int, row, col int) bool {
 		x := array[i]
 		y := i
 
+		//   |            ——               /             \
 		if row == y || col == x || row-col == y-x || row+col == y+x {
 			return false
 		}
@@ -51,6 +52,7 @@ func Queen(array *[ROW]int, row int) {
 	}
 
 	for i := 0; i < COL; i++ {
+		//check node is vaild
 		if Check(array, row, i) {
 			array[row] = i
 			Queen(array, row+1)
