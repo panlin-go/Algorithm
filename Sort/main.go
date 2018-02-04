@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sort"
+)
 
 func show(array []int) {
 	n := len(array)
@@ -70,5 +73,8 @@ func main() {
 	array := []int{38, 5, 19, 26, 49, 97, 1, 66}
 
 	//maopao(array)
-	kuaipai(array, 0, 7)
+	//kuaipai(array, 0, 7)
+	//sort.InsertionSort(array)
+	sort.MergeSort(array)
+	show(array)
 }
