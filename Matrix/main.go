@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 var matrix1 = [][]int{
 	{1, 2},
@@ -17,31 +19,19 @@ func multiplication(m1, m2 [][]int) [][]int {
 	row := len(m1)
 	col := len(m2[0])
 
-	array := make([][]int, col)
+	array := make([][]int, row)
 
 	for i := 0; i < row; i++ {
 		for j := 0; j < col; j++ {
-			array[i][j] = single(m1, m2, i, j)
+			sum := 0
+			for m := 0; m < row; m++ {
+				sum += m1[i][m] * m2[m][j]
+			}
+			array[i] = append(array[i], single(m1, m2, i, j))
 		}
 	}
 
 	return array
-}
-
-func single(m1, m2 [][]int, x, y int) int {
-	xlen := len(m1[0])
-	ylen := len(m2)
-
-	sum := 0
-
-	for i := 0; i < xlen; i++ {
-		for j := 0; j < ylen; j++ {
-
-			sum += m1[x][i] * m2[j][y]
-		}
-	}
-
-	return sum
 }
 
 func main() {
